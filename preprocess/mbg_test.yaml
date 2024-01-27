@@ -1,0 +1,10 @@
+# train and val data
+train: C:/Users/user/Downloads/projects/AutoYOLOv5/datasets/images/train/
+val: C:/Users/user/Downloads/projects/AutoYOLOv5/datasets/images/val/
+
+# number of classes
+nc: 6
+
+# class names
+names: [ 'bucket', 'watertank', 'bottle', 'pool', 'tire', 'puddle']
+
