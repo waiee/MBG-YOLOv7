@@ -67,10 +67,6 @@ label_files = os.listdir(label_folder)
 image_files.sort()
 label_files.sort()
 
-# # Split the data into train, val, and test sets
-# image_train, image_temp, label_train, label_temp = train_test_split(image_files, label_files, test_size=0.4, random_state=42)
-# image_val, image_test, label_val, label_test = train_test_split(image_temp, label_temp, test_size=0.333, random_state=42)
-
 #First split to get 20% as test set
 image_train, image_test, label_train, label_test = train_test_split(image_files, label_files, test_size=0.6, random_state=1)
 image_train, image_val, label_train, label_val = train_test_split(image_train, label_train, test_size=0.333, random_state=1)
