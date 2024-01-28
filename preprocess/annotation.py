@@ -92,4 +92,4 @@ if __name__ == "__main__":
     for video_file in video_files:
         video_path = os.path.join(video_directory, video_file)
         xml_file = os.path.join(annotation_directory, f"{os.path.splitext(video_file)[0]}.xml")
-        split_video(video_path, xml_file, output_image_directory, output_annotation_directory, frame_rate, class_ids)
+        split_video(video_path, xml_file, output_image_directory, output_annotation_directory, frame_rate)
