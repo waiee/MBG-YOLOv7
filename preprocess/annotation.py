@@ -85,7 +85,7 @@ if __name__ == "__main__":
     output_annotation_directory = "C:/Users/user/Downloads/projects/MBGprocess/labelframes"
     frame_rate = 1
 
-    class_ids = {"tire": 0, "bottle": 1, "your_class_2": 2, "your_class_3": 3, "your_class_4": 4, "your_class_5": 5}
+    class_ids = {"tire": 0, "bottle": 1, "bucket": 2, "watertank": 3, "pool": 4, "puddle": 5}
 
     video_files = [f for f in os.listdir(video_directory) if f.endswith(".avi")]
 
