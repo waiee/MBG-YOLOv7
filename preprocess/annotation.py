@@ -182,7 +182,7 @@ if __name__ == "__main__":
     annotation_directory = "C:/Users/user/Downloads/FYP/fypfiles/mbgdataset/flightann"
     output_image_directory = "C:/Users/user/Downloads/projects/MBGprocess/imageframes"
     output_annotation_directory = "C:/Users/user/Downloads/projects/MBGprocess/labelframes"
-    frame_rate = 3
+    frame_rate = 1
 
     class_ids = {"tire": 0, "bottle": 1, "your_class_2": 2, "your_class_3": 3, "your_class_4": 4, "your_class_5": 5}
 
