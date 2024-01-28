@@ -76,7 +76,6 @@ image_train, image_test, label_train, label_test = train_test_split(image_files,
 image_train, image_val, label_train, label_val = train_test_split(image_train, label_train, test_size=0.333, random_state=1)
 # 33.3% of 60% is 20% of the whole dataset (0.333 x 0.6 = 0.2)
 
-
 # Copy the training set to the train directory
 for image_file, label_file in zip(image_train, label_train):
     shutil.copy(os.path.join(image_folder, image_file), os.path.join(train_directory, image_file))
