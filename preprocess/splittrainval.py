@@ -71,15 +71,10 @@ label_files.sort()
 # image_train, image_temp, label_train, label_temp = train_test_split(image_files, label_files, test_size=0.4, random_state=42)
 # image_val, image_test, label_val, label_test = train_test_split(image_temp, label_temp, test_size=0.333, random_state=42)
 
-# Split the data into train, val, and test sets
-image_train, image_temp, label_train, label_temp = train_test_split(image_files, label_files, test_size=0.4, random_state=42)
-image_val, image_test, label_val, label_test = train_test_split(image_temp, label_temp, test_size=0.333, random_state=42)
-
 #First split to get 20% as test set
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
-#Split the training set again to get the validation set (requires calculation the get the needed percentage)
-X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.125, random_state=1)
-# 12.5% of 80% is 10% of the whole dataset (0.125 x 0.8 = 0.1)
+image_train, image_test, label_train, label_test = train_test_split(image_files, label_files, test_size=0.6, random_state=1)
+image_train, image_val, label_train, label_val = train_test_split(image_train, label_train, test_size=0.333, random_state=1)
+# 33.3% of 60% is 20% of the whole dataset (0.333 x 0.6 = 0.2)
 
 
 # Copy the training set to the train directory
