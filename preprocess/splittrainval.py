@@ -46,8 +46,8 @@ from sklearn.model_selection import train_test_split
 dataset_directory = "C:/Users/user/Downloads/projects/MBG-YOLOv7/datasets"
 
 # Set the paths for image and label folders
-image_folder = os.path.join(dataset_directory, "images")
-label_folder = os.path.join(dataset_directory, "labels")
+image_folder = os.path.join(dataset_directory, "imageframes")
+label_folder = os.path.join(dataset_directory, "labelframes")
 
 # Set the paths for the training, validation, and test folders
 train_directory = os.path.join(dataset_directory, "train")
