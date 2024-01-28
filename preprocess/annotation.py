@@ -122,15 +122,15 @@ def read_annotations(xml_file):
 
     return annotations
 
-def convert_to_yolo_format(class_id, image_width, image_height, bbox):
+def convert_to_yolo_format(image_width, image_height, bbox):
     x_center = (bbox[0] + bbox[2]) / 2 / image_width
     y_center = (bbox[1] + bbox[3]) / 2 / image_height
     width = (bbox[2] - bbox[0]) / image_width
     height = (bbox[3] - bbox[1]) / image_height
 
-    return f"{class_id} {x_center} {y_center} {width} {height}"
+    return x_center, y_center, width, height
 
-def split_video(video_path, xml_file, output_image_directory, output_annotation_directory, frame_rate=1, class_ids=None):
+def split_video(video_path, xml_file, output_image_directory, output_annotation_directory, frame_rate=1):
     cap = cv2.VideoCapture(video_path)
     annotations = read_annotations(xml_file)
 
@@ -154,15 +154,10 @@ def split_video(video_path, xml_file, output_image_directory, output_annotation_
                     xmin, ymin, xmax, ymax = annotation['bbox']
                     label = annotation['label']
 
-                    class_id = class_ids.get(label)
-                    if class_id is not None:
-                        yolo_format = convert_to_yolo_format(class_id, image_width, image_height, (xmin, ymin, xmax, ymax))
-                        print(f"Label: {label}, Class ID: {class_id}, YOLO Format: {yolo_format}")
-                        yolo_file.write(f"{yolo_format}\n")
-                    else:
-                        print(f"Label '{label}' not found in class_ids dictionary. Skipping.")
-        else:
-            print(f"No annotations for frame {frame_number}.")
+                    x_center, y_center, width, height = convert_to_yolo_format(image_width, image_height, (xmin, ymin, xmax, ymax))
+
+                    # Write YOLO format annotation to file
+                    yolo_file.write(f"{label} {x_center} {y_center} {width} {height}\n")
 
         # Create the output directories if they don't exist
         os.makedirs(output_image_directory, exist_ok=True)
@@ -184,11 +179,9 @@ if __name__ == "__main__":
     output_annotation_directory = "C:/Users/user/Downloads/projects/MBGprocess/labelframes"
     frame_rate = 1
 
-    class_ids = {"tire": 0, "bottle": 1, "your_class_2": 2, "your_class_3": 3, "your_class_4": 4, "your_class_5": 5}
-
     video_files = [f for f in os.listdir(video_directory) if f.endswith(".avi")]
 
     for video_file in video_files:
         video_path = os.path.join(video_directory, video_file)
         xml_file = os.path.join(annotation_directory, f"{os.path.splitext(video_file)[0]}.xml")
-        split_video(video_path, xml_file, output_image_directory, output_annotation_directory, frame_rate, class_ids)
+        split_video(video_path, xml_file, output_image_directory, output_annotation_directory, frame_rate)
