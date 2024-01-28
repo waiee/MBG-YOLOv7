@@ -80,8 +80,8 @@ def split_video(video_path, xml_file, output_image_directory, output_annotation_
 if __name__ == "__main__":
     video_directory = "C:/Users/user/Downloads/FYP/fypfiles/mbgdataset/flightavi"
     annotation_directory = "C:/Users/user/Downloads/FYP/fypfiles/mbgdataset/flightann"
-    output_image_directory = "datasets/imagesplit"
-    output_annotation_directory = "datasets/labelsplit"
+    output_image_directory = "datasets/imageframes"
+    output_annotation_directory = "datasets/labelframes"
     frame_rate = 1
 
     class_ids = {"tire": 0, "bottle": 1, "your_class_2": 2, "your_class_3": 3, "your_class_4": 4, "your_class_5": 5}
