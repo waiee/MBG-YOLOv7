@@ -29,8 +29,6 @@
 # train_set = list(zip(image_train, label_train))
 # val_set = list(zip(image_val, label_val))
 # test_set = list(zip(image_test, label_test))
-
-
 import os
 import shutil
 from sklearn.model_selection import train_test_split
@@ -50,7 +48,7 @@ test_directory = os.path.join(dataset_directory, "test")
 # Create train, val, and test directories if they don't exist
 os.makedirs(train_directory, exist_ok=True)
 os.makedirs(val_directory, exist_ok=True)
-os.makedirs(test_directory, exist_ok=True)A
+os.makedirs(test_directory, exist_ok=True)
 
 # Get lists of image and label files
 image_files = os.listdir(image_folder)
