@@ -1,3 +1,36 @@
+# import os
+# from sklearn.model_selection import train_test_split
+
+# # Set the path to the dataset directory
+# dataset_directory = "C:/Users/user/Downloads/projects/MBG-YOLOv7/datasets"
+
+# # Set the paths for image and label folders
+# image_folder = os.path.join(dataset_directory, "imageframes")
+# label_folder = os.path.join(dataset_directory, "labelframes")
+
+# # Get lists of image and label files
+# image_files = os.listdir(image_folder)
+# label_files = os.listdir(label_folder)
+
+# # Ensure the lists are sorted for consistency
+# image_files.sort()
+# label_files.sort()
+
+# # Split the data into training, validation, and test sets
+# image_train, image_test, label_train, label_test = train_test_split(image_files, label_files, test_size=0.6, random_state=1)
+# image_train, image_val, label_train, label_val = train_test_split(image_train, label_train, test_size=0.333, random_state=1)
+
+# # Display the lengths of the sets
+# print("Train set size:", len(image_train))
+# print("Validation set size:", len(image_val))
+# print("Test set size:", len(image_test))
+
+# # Now you have variables containing the file paths for each set
+# train_set = list(zip(image_train, label_train))
+# val_set = list(zip(image_val, label_val))
+# test_set = list(zip(image_test, label_test))
+
+
 import os
 import shutil
 from sklearn.model_selection import train_test_split
@@ -17,7 +50,7 @@ test_directory = os.path.join(dataset_directory, "test")
 # Create train, val, and test directories if they don't exist
 os.makedirs(train_directory, exist_ok=True)
 os.makedirs(val_directory, exist_ok=True)
-os.makedirs(test_directory, exist_ok=True)
+os.makedirs(test_directory, exist_ok=True)A
 
 # Get lists of image and label files
 image_files = os.listdir(image_folder)
@@ -46,3 +79,4 @@ for image_file, label_file in zip(image_val, label_val):
 for image_file, label_file in zip(image_test, label_test):
     shutil.copy(os.path.join(image_folder, image_file), os.path.join(test_directory, image_file))
     shutil.copy(os.path.join(label_folder, label_file), os.path.join(test_directory, label_file))
+
